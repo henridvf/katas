@@ -33,7 +33,7 @@ def format_duration(seconds):
         lst.append(msg_days)
 
     if hours >= 1:
-        msg_hours = f"{hours} hour{'s' if days > 1 else ''}"
+        msg_hours = f"{hours} hour{'s' if hours > 1 else ''}"
         lst.append(msg_hours)
 
     if mins >= 1:
@@ -45,10 +45,10 @@ def format_duration(seconds):
         lst.append(msg_secs)
 
     # display formatting
-    msg = ''.join([(', ' if x != lst[-1] else ' and ') + str(x) for x in lst])
+    msg = ''.join([(' and ' if x == lst[-1] and len(lst) > 1 else ', ') + str(x) for x in lst])
 
     return msg[2:]
 
 
 # print(format_duration(3660))
-print(format_duration(23423456))
+print(format_duration(60))
